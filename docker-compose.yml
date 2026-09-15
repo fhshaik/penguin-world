@@ -25,12 +25,15 @@ services:
     restart: unless-stopped
     env_file:
       - .env
+    environment:
+      ECONOMY_PORT: ${ECONOMY_PORT:-3010}
     ports:
       - "127.0.0.1:${WEB_PORT}:80"
     networks:
       - wand
     links:
       - dash:dash
+      - economy:economy
     volumes:
       - ./www:/usr/share/nginx/html
       - ./vanilla-media:/usr/share/nginx/vanilla
@@ -52,6 +55,24 @@ services:
     labels:
       net.unraid.docker.webui: http://[IP]:[PORT:${WEB_PORT}]
       net.unraid.docker.icon: https://raw.githubusercontent.com/solero/wand/refs/heads/master/icons/houdini.png
+  economy:
+    build: ./dash
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      ECONOMY_PORT: ${ECONOMY_PORT:-3010}
+      ECONOMY_AUTH_KEY: ${ECONOMY_AUTH_KEY:-houdini}
+      POSTGRES_HOST: db
+    networks:
+      - wand
+    volumes:
+      - ./economy:/usr/src/economy:ro
+    depends_on:
+      - db
+    entrypoint: ["dockerize", "-wait", "tcp://db:5432", "python", "/usr/src/economy/app.py"]
+    labels:
+      net.unraid.docker.icon: https://raw.githubusercontent.com/solero/wand/refs/heads/master/icons/db.png
   houdini_login:
     build: ./houdini
     restart: unless-stopped

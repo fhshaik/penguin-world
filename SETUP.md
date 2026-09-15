@@ -15,6 +15,10 @@ Open PowerShell in this folder:
 
 Alternatively, double-click Play Penguin World.cmd after starting the server. The game needs the local Electron client and a compatible Pepper Flash runtime; those binary dependencies are deliberately excluded from the public repository. A normal browser cannot run this Flash game.
 
+Click another penguin and press **TRADE** on their in-game player card to open the two-player Trading Post for that penguin. Both players sign in there with their game accounts. It supports base-game wearables, furniture, and coins; see [ECONOMY.md](ECONOMY.md) for its rules and confirmation flow.
+
+On first play, the launcher builds the small player-card patch from your local original `interface.swf`. It downloads JPEXS and a portable Temurin Java runtime into ignored local folders, then keeps the original and generated client files out of Git.
+
 Create your own account (4-12 letters, numbers, or spaces):
 
 ```powershell
@@ -34,7 +38,7 @@ A SetupTest account was created for verification. Its generated password is in l
 .\world.ps1 stop
 ```
 
-The start command launches database, Redis, login, English Blizzard world, account website, and web/media services. Docker Desktop must be running. The PC must remain awake while hosting.
+The start command launches database, Redis, login, English Blizzard world, account website, economy, and web/media services. Docker Desktop must be running. The PC must remain awake while hosting.
 
 Game progress lives in Docker volume penguin-world_penguin_data, outside OneDrive. Never remove that volume to troubleshoot. Backups go to backups/. Keep the .env file and local-accounts/ private.
 

@@ -10,6 +10,7 @@ client/node_modules/
 client/pepflashplayer.dll
 downloads/
 local-accounts/
+logs/
 client-check.png
 __pycache__/
 *.pyc

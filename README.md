@@ -2,7 +2,7 @@
 
 Penguin World is a private, noncommercial Club Penguin development world for a small group of friends. It currently preserves the original game through Wand/Houdini and a local Flash client while serving as a base for custom economy and social features.
 
-See [SETUP.md](SETUP.md) for local setup, [GAMEPLAY-TEST.md](GAMEPLAY-TEST.md) for verified behavior, and [PROJECT-CONTEXT.md](PROJECT-CONTEXT.md) for product decisions. Copy `.env.example` to `.env` and replace its placeholder database password before starting.
+See [SETUP.md](SETUP.md) for local setup, [ECONOMY.md](ECONOMY.md) for direct trading, [GAMEPLAY-TEST.md](GAMEPLAY-TEST.md) for verified behavior, and [PROJECT-CONTEXT.md](PROJECT-CONTEXT.md) for product decisions. Copy `.env.example` to `.env` and replace its placeholder database password before starting.
 
 This repository does not include downloaded Club Penguin media, account data, database backups, dependencies, or a Flash runtime. Club Penguin names and media belong to Disney; this project is unofficial and is not affiliated with Disney.
 
