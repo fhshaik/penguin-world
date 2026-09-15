@@ -125,6 +125,27 @@ services:
               "--database-password", "${POSTGRES_PASSWORD}"]
     labels:
       net.unraid.docker.icon: https://raw.githubusercontent.com/solero/wand/refs/heads/master/icons/houdini.png
+  trade_bot:
+    profiles: ["testing"]
+    build: ./houdini
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      GAME_LOGIN_HOST: houdini_login
+      GAME_WORLD_HOST: houdini_blizzard
+      GAME_WORLD_PORT: 19875
+    networks:
+      - wand
+    volumes:
+      - ./houdini:/usr/src/houdini
+      - ./tools:/usr/src/houdini/local-tools:ro
+      - ./local-accounts:/local-accounts:ro
+    depends_on:
+      - houdini_login
+      - houdini_blizzard
+    entrypoint: ["dockerize", "-wait", "tcp://houdini_login:${GAME_LOGIN_PORT}", "-wait", "tcp://houdini_blizzard:19875",
+                 "python", "local-tools/trade-test-bot.py", "/local-accounts/TradeTest.json"]
   houdini_glaciar:
     build: ./houdini
     restart: unless-stopped

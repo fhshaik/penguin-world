@@ -29,6 +29,8 @@ The script asks for a password locally and does not save it. Accounts are active
 
 A SetupTest account was created for verification. Its generated password is in local-accounts/SetupTest.json (ignored by Git). Use your own account for normal play.
 
+For an in-game trade test, create an ignored `local-accounts/TradeTest.json` file containing `player` and `buddy` objects with `name` and `password` fields. Then run `./world.ps1 trade-test`. This creates or refreshes both accounts, gives each a small tradable inventory, and keeps the buddy online in Town. Stop it with `docker compose --profile testing stop trade_bot`.
+
 ## Controls
 
 ```powershell

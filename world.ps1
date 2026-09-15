@@ -1,4 +1,4 @@
-param([ValidateSet('start','stop','status','logs','backup','play')][string]$Action = 'status')
+param([ValidateSet('start','stop','status','logs','backup','play','trade-test')][string]$Action = 'status')
 $ErrorActionPreference = 'Stop'
 Set-Location $PSScriptRoot
 switch ($Action) {
@@ -14,6 +14,13 @@ switch ($Action) {
    $clientDir = Join-Path $PSScriptRoot 'client'
    Start-Process -FilePath (Join-Path $clientDir 'node_modules/electron/dist/electron.exe') -ArgumentList '.' -WorkingDirectory $clientDir
    return
+ }
+ 'trade-test' {
+   $accountFile = Join-Path $PSScriptRoot 'local-accounts/TradeTest.json'
+   if (-not (Test-Path -LiteralPath $accountFile)) { throw 'Missing local-accounts/TradeTest.json.' }
+   Get-Content -LiteralPath $accountFile -Raw | docker compose exec -T houdini_login python local-tools/seed-trade-test-accounts.py
+   if ($LASTEXITCODE -ne 0) { throw 'Creating the local trade-test accounts failed.' }
+   docker compose --profile testing up -d trade_bot
  }
  'stop' { docker compose stop }
  'status' { docker compose ps }
