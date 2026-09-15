@@ -11,7 +11,8 @@ switch ($Action) {
      $needsPatch = (Get-FileHash -LiteralPath $interfacePath -Algorithm SHA256).Hash -ne (Get-Content -LiteralPath $patchHashPath -Raw).Trim()
    }
    if ($needsPatch) { & (Join-Path $PSScriptRoot 'build-client-patch.ps1') }
-   Start-Process -FilePath (Join-Path $PSScriptRoot 'client/node_modules/electron/dist/electron.exe')
+   $clientDir = Join-Path $PSScriptRoot 'client'
+   Start-Process -FilePath (Join-Path $clientDir 'node_modules/electron/dist/electron.exe') -ArgumentList '.' -WorkingDirectory $clientDir
    return
  }
  'stop' { docker compose stop }

@@ -37,7 +37,7 @@ app.whenReady().then(() => {
     win.setBrowserView(tradeView);
     sizeTradeView();
     tradeView.setAutoResize({ width: true, height: true });
-    tradeView.webContents.setWindowOpenHandler(() => ({ action: 'deny' }));
+    tradeView.webContents.on('new-window', event => event.preventDefault());
     tradeView.webContents.on('will-navigate', (event, url) => {
       if (url === 'penguin-trade://close') {
         event.preventDefault();
@@ -53,9 +53,9 @@ app.whenReady().then(() => {
     tradeView.webContents.focus();
   };
   win.on('resize', sizeTradeView);
-  win.webContents.setWindowOpenHandler(({ url }) => {
+  win.webContents.on('new-window', (event, url) => {
+    event.preventDefault();
     if (url.startsWith('penguin-trade://')) openTrade(url);
-    return { action: 'deny' };
   });
   win.webContents.on('will-navigate', (event, url) => {
     if (url.startsWith('penguin-trade://')) {
