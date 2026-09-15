@@ -1,6 +1,6 @@
 # Base-game economy and direct trading
 
-Penguin World includes an in-game Trading Post for exchanging the original game's wearable items, furniture, and coins. Click another penguin, open their player card, and press **TRADE**. The menu opens for that penguin; **F8** remains a keyboard shortcut for opening the general Trading Post.
+Penguin World includes an in-game Trading Post for exchanging the original game's wearable items, furniture, and coins. Click another penguin, open their player card, and press **TRADE**. The menu opens over the Flash game for that penguin; close it or press **Escape** to return to gameplay. **F8** toggles the general Trading Post.
 
 ## Trade flow
 

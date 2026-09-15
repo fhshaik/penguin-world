@@ -1,5 +1,6 @@
 const root = document.querySelector('#app')
 const toastNode = document.querySelector('#toast')
+document.querySelector('#close-window').onclick = () => { location.href = 'penguin-trade://close' }
 const mediaOrigin = `${location.protocol}//media.localhost${location.port ? `:${location.port}` : ''}`
 const requestedTarget = Number(new URLSearchParams(location.search).get('target')) || null
 const requestedName = new URLSearchParams(location.search).get('name') || ''

@@ -31,7 +31,7 @@ Items and coins are reserved while offered so they cannot be spent or removed by
 
 The implemented base-game rules allow ordinary unequipped clothing and unplaced furniture. Colors, awards, EPF/tour/treasure rewards, equipped items, and explicitly bound assets are blocked. Clothing remains non-stackable; furniture uses the game's existing quantity field. Direct friend trades have no fee.
 
-The first trading implementation adds a TRADE action to the clicked penguin's original in-game player card. The ActionScript action passes that penguin directly to a Club Penguin-styled trade menu hosted by the Electron client. A Sanic service authenticates game accounts, manages invitations and offer state, enforces one active trade per penguin, reserves offered assets, requires Ready and Confirm from both sides, transfers both offers atomically in PostgreSQL, and records a receipt. The current scope is original game items and coins only; generated item instances, materials, crafting, listings, and The Wild remain out of scope.
+The first trading implementation adds a TRADE action to the clicked penguin's original in-game player card. The ActionScript action passes that penguin directly to a Club Penguin-styled trade menu embedded over the Flash game in the same Electron window. A Sanic service authenticates game accounts, manages invitations and offer state, enforces one active trade per penguin, reserves offered assets, requires Ready and Confirm from both sides, transfers both offers atomically in PostgreSQL, and records a receipt. The current scope is original game items and coins only; generated item instances, materials, crafting, listings, and The Wild remain out of scope.
 
 ## Public repository policy
 
