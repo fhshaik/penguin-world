@@ -1,0 +1,15 @@
+.env
+.env.*
+!.env.example
+.data/
+backups/
+www/
+*.tar.gz
+client-source/
+client/node_modules/
+client/pepflashplayer.dll
+downloads/
+local-accounts/
+client-check.png
+__pycache__/
+*.pyc

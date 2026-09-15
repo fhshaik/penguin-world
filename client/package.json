@@ -1,0 +1,1 @@
+{"name":"penguin-world-client","version":"1.0.0","private":true,"main":"main.js","scripts":{"start":"electron ."},"devDependencies":{"electron":"11.1.1"}}

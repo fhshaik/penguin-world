@@ -1,5 +1,5 @@
 server {
-    server_name  {{ (parseUrl .Env.WEB_VANILLA_PLAY).Host }};
+    server_name  play.localhost localhost;
 
     location {{ (parseUrl .Env.WEB_VANILLA_PLAY).Path }}/ {
         root   /usr/share/nginx/vanilla/play/;
@@ -115,7 +115,7 @@ server {
 }
 
 server {
-    server_name  {{ (parseUrl .Env.WEB_VANILLA_MEDIA).Host }};
+    server_name  media.localhost;
 
     location / {
         root   /usr/share/nginx/vanilla/media;
