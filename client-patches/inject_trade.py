@@ -21,22 +21,22 @@ function showTradeButton()
    if(button == undefined)
    {
       button = card.createEmptyMovieClip("trade_mc",card.getNextHighestDepth());
-      button._x = 230;
-      button._y = 276;
+      button._x = card.report_mc._x - 20;
+      button._y = card.report_mc._y - 42;
       button.lineStyle(2,16777215,100);
-      button.beginFill(692953,100);
+      button.beginFill(16234264,100);
       button.moveTo(6,0);
-      button.lineTo(38,0);
-      button.curveTo(44,0,44,6);
-      button.lineTo(44,16);
-      button.curveTo(44,22,38,22);
-      button.lineTo(6,22);
-      button.curveTo(0,22,0,16);
+      button.lineTo(64,0);
+      button.curveTo(70,0,70,6);
+      button.lineTo(70,20);
+      button.curveTo(70,26,64,26);
+      button.lineTo(6,26);
+      button.curveTo(0,26,0,20);
       button.lineTo(0,6);
       button.curveTo(0,0,6,0);
       button.endFill();
-      button.createTextField("label_txt",1,2,2,40,18);
-      var format = new TextFormat("_sans",10,16777215,true);
+      button.createTextField("label_txt",1,3,4,64,18);
+      var format = new TextFormat("_sans",11,478067,true);
       format.align = "center";
       button.label_txt.setNewTextFormat(format);
       button.label_txt.text = "TRADE";

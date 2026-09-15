@@ -1,10 +1,12 @@
-const { app, BrowserView, BrowserWindow } = require('electron');
+const { app, BrowserView, BrowserWindow, session } = require('electron');
 const path = require('path');
 const gameHome = 'http://play.localhost:8088';
 const tradeHome = 'http://trade.localhost:8088';
 app.commandLine.appendSwitch('ppapi-flash-path', path.join(__dirname, 'pepflashplayer.dll'));
 app.commandLine.appendSwitch('ppapi-flash-version', '31.0.0.122');
-app.whenReady().then(() => {
+app.commandLine.appendSwitch('disable-http-cache');
+app.whenReady().then(async () => {
+  await session.defaultSession.clearCache();
   const win = new BrowserWindow({ width: 1280, height: 900, title: 'Penguin World', autoHideMenuBar: true,
     webPreferences: { plugins: true, nodeIntegration: false, contextIsolation: true } });
   let tradeView = null;
